@@ -45,9 +45,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IBidiSpl\IBidiSpl.csproj">
-      <Project>{3022dc5b-7c3a-4ea9-98e6-1ded398b1a66}</Project>
-      <Name>IBidiSpl</Name>
+    <ProjectReference Include="..\Bidi\Bidi.csproj">
+      <Project>{3022DC5B-7C3A-4EA9-98E6-1DED398B1A66}</Project>
+      <Name>Bidi</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
