@@ -23,7 +23,7 @@ namespace IBidiSpl
         // virtual HRESULT STDMETHODCALLTYPE GetResult(
         // /* [out] */ __RPC__out HRESULT *phr) = 0;
 
-        Int32 GetResult([Out] Int32 phr);
+        Int32 GetResult([In, Out] ref Int32 phr);
 
         // virtual HRESULT STDMETHODCALLTYPE GetOutputData(
         // /* [in] */ const DWORD dwIndex,
@@ -33,13 +33,13 @@ namespace IBidiSpl
         // /* [out] */ __RPC__out ULONG* uSize) = 0;
 
         Int32 GetOutputData([In] UInt32 dwIndex,
-                            [Out] string ppszSchema,
-                            [Out] UInt32 pdwType,
-                            [Out] IntPtr ppData,
-                            [Out] UInt32 uSize);
+                            [In, Out] ref IntPtr ppszSchema,
+                            [In, Out] ref UInt32 pdwType,
+                            [In, Out] ref IntPtr ppData,
+                            [In, Out] ref UInt32 uSize);
 
         //virtual HRESULT STDMETHODCALLTYPE GetEnumCount(
         //    /* [out] */ __RPC__out DWORD *pdwTotal) = 0;
-        Int32 GetEnumCount([Out] UInt32 pdwTotal);
+        Int32 GetEnumCount([In,Out] ref UInt32 pdwTotal);
     }
 }

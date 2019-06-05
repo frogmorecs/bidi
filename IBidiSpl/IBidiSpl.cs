@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+// ReSharper disable InconsistentNaming
 
 namespace IBidiSpl
 {
     [ComImport, Guid("D580DC0E-DE39-4649-BAA8-BF0B85A03A97")]
     [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    interface IBidiSpl
+    public interface IBidiSpl
     {
         // virtual HRESULT STDMETHODCALLTYPE BindDevice(
         // /* [in] */ __RPC__in const LPCWSTR pszDeviceName,
@@ -34,5 +35,23 @@ namespace IBidiSpl
             [In, MarshalAs(UnmanagedType.LPWStr)] string pszAction,
             [In, MarshalAs(UnmanagedType.Interface)] IBidiRequestContainer pRequestContainer
         );
+    }
+
+    public enum BIDI_ACCESS: uint
+    {
+        BIDI_ACCESS_ADMINISTRATOR = 0x1,
+        BIDI_ACCESS_USER = 0x2,
+    }
+
+    public enum BIDI_DATA_TYPE: uint
+    {
+        BIDI_NULL = 0,
+        BIDI_INT = 1,
+        BIDI_FLOAT = 2,
+        BIDI_BOOL = 3,
+        BIDI_STRING = 4,
+        BIDI_TEXT = 5,
+        BIDI_ENUM = 6,
+        BIDI_BLOB = 7
     }
 }
