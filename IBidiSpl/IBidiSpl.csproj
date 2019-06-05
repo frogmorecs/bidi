@@ -45,6 +45,8 @@
     <Compile Include="BidiRequestContainer.cs" />
     <Compile Include="BidiSpl.cs" />
     <Compile Include="IBidiRequest.cs" />
+    <Compile Include="IBidiRequestContainer.cs" />
+    <Compile Include="IEnumUnknown.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
