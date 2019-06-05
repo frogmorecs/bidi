@@ -11,7 +11,7 @@ namespace IBidiSpl
         // virtual HRESULT STDMETHODCALLTYPE SetSchema(
         // /* [in] */ __RPC__in const LPCWSTR pszSchema) = 0;
 
-        Int32 SetSchema([In, MarshalAs(UnmanagedType.LPWStr)] string pszSchema);
+        Int32 SetSchema([MarshalAs(UnmanagedType.LPWStr)] string pszSchema);
 
         // virtual HRESULT STDMETHODCALLTYPE SetInputData(
         // /* [in] */ const DWORD dwType,
@@ -23,7 +23,7 @@ namespace IBidiSpl
         // virtual HRESULT STDMETHODCALLTYPE GetResult(
         // /* [out] */ __RPC__out HRESULT *phr) = 0;
 
-        Int32 GetResult([In, Out] ref Int32 phr);
+        Int32 GetResult(out Int32 phr);
 
         // virtual HRESULT STDMETHODCALLTYPE GetOutputData(
         // /* [in] */ const DWORD dwIndex,
@@ -32,14 +32,14 @@ namespace IBidiSpl
         // /* [out] */ __RPC__deref_out_opt BYTE** ppData,
         // /* [out] */ __RPC__out ULONG* uSize) = 0;
 
-        Int32 GetOutputData([In] UInt32 dwIndex,
-                            [In, Out] ref IntPtr ppszSchema,
-                            [In, Out] ref UInt32 pdwType,
-                            [In, Out] ref IntPtr ppData,
-                            [In, Out] ref UInt32 uSize);
+        Int32 GetOutputData(UInt32 dwIndex,
+                            out IntPtr ppszSchema,
+                            out UInt32 pdwType,
+                            out IntPtr ppData,
+                            out UInt32 uSize);
 
         //virtual HRESULT STDMETHODCALLTYPE GetEnumCount(
         //    /* [out] */ __RPC__out DWORD *pdwTotal) = 0;
-        Int32 GetEnumCount([In,Out] ref UInt32 pdwTotal);
+        Int32 GetEnumCount(out UInt32 pdwTotal);
     }
 }

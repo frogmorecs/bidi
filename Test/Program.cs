@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Runtime.InteropServices;
 using IBidiSpl;
 // ReSharper disable SuspiciousTypeConversion.Global
@@ -25,32 +24,27 @@ namespace Test
             {
                 bidiInterface.SendRecv("GetAll", bidiRequestInterface);
 
-                Int32 hResult = 0;
-                bidiRequestInterface.GetResult(ref hResult);
+                bidiRequestInterface.GetResult(out var hResult);
                 if (hResult != 0)
                 {
-                    throw new Win32Exception(hResult);
+                    Marshal.ThrowExceptionForHR(hResult);
                 }
 
-                UInt32 count = 0;
-                bidiRequestInterface.GetEnumCount(ref count);
+                bidiRequestInterface.GetEnumCount(out var count);
 
                 Console.WriteLine($"Bidi request has {count} output results.");
 
                 for (UInt32 i = 0; i < count; i++)
                 {
-                    IntPtr schemaPtr = IntPtr.Zero;
-                    UInt32 type = 0;
-                    IntPtr dataPtr = IntPtr.Zero;
-                    UInt32 size = 0;
+                    bidiRequestInterface.GetOutputData(i, out var schemaPtr, out var type, out var dataPtr, out var size);
 
-                    bidiRequestInterface.GetOutputData(i, ref schemaPtr, ref type, ref dataPtr, ref size);
                     try
                     {
                         var schema = Marshal.PtrToStringUni(schemaPtr);
                         Console.WriteLine($"Schema: {schema}");
 
                         Console.WriteLine($"Data size: {size}");
+
                         switch ((BIDI_DATA_TYPE)type)
                         {
                             case BIDI_DATA_TYPE.BIDI_NULL:
@@ -72,8 +66,7 @@ namespace Test
 
                             case BIDI_DATA_TYPE.BIDI_BOOL:
                                 Console.WriteLine("Data type BOOL");
-                                intResult = (UInt32) Marshal.PtrToStructure(dataPtr, typeof(UInt32));
-                                var boolResult = intResult != 0;
+                                var boolResult = (bool) Marshal.PtrToStructure(dataPtr, typeof(bool));
                                 Console.WriteLine($"Value: {boolResult}");
                                 break;
 
@@ -123,6 +116,7 @@ namespace Test
             finally
             {
                 bidiInterface.UnbindDevice();
+
                 Marshal.FinalReleaseComObject(bidiRequest);
                 Marshal.FinalReleaseComObject(bidiSpl);
             }
