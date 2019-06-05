@@ -17,13 +17,13 @@ namespace Test
             var bidiRequest = Activator.CreateInstance<BidiRequest>();
             var bidiRequestInterface = (IBidiRequest) bidiRequest;
 
-            bidiRequestInterface.SetSchema("\\Printer.DeviceInfo:ModelName");
+            bidiRequestInterface.SetSchema("\\Printer");
 
             bidiInterface.BindDevice(args[0], (uint) BIDI_ACCESS.BIDI_ACCESS_ADMINISTRATOR);
 
             try
             {
-                bidiInterface.SendRecv("Get", bidiRequestInterface);
+                bidiInterface.SendRecv("GetAll", bidiRequestInterface);
 
                 Int32 hResult = 0;
                 bidiRequestInterface.GetResult(ref hResult);
