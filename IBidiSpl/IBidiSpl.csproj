@@ -46,6 +46,7 @@
     <Compile Include="BidiSpl.cs" />
     <Compile Include="IBidiRequest.cs" />
     <Compile Include="IBidiRequestContainer.cs" />
+    <Compile Include="IBidiSpl.cs" />
     <Compile Include="IEnumUnknown.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
