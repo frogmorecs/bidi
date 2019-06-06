@@ -26,6 +26,12 @@ namespace Test
 
     }
 
+    [Verb("GetWithArgument", HelpText = "Request the bidi schema value using the data set as input argument.")]
+    public class GetWithArgumentOptions : Options
+    {
+
+    }
+
     [Verb("GetAll", HelpText = "Get the values of all child nodes of the specified schema.")]
     public class GetAllOptions : Options
     {
