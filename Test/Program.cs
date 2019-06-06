@@ -13,9 +13,10 @@ namespace Test
         {
             Parser
                 .Default
-                .ParseArguments<GetOptions, GetAllOptions>(args)
+                .ParseArguments<GetOptions, GetAllOptions, SetOptions>(args)
                 .WithParsed<GetOptions>(options => GetRequest(options, "Get"))
-                .WithParsed<GetAllOptions>(options => GetRequest(options, "GetAll"));
+                .WithParsed<GetAllOptions>(options => GetRequest(options, "GetAll"))
+                .WithParsed<SetOptions>(SetRequest);
         }
 
         private static void GetRequest(Options options, string verb)
@@ -161,6 +162,11 @@ namespace Test
                 Marshal.FinalReleaseComObject(bidiRequestContainer);
                 Marshal.FinalReleaseComObject(bidiSpl);
             }
+        }
+
+        private static void SetRequest(SetOptions options)
+        {
+            throw new NotImplementedException(nameof(SetRequest));
         }
     }
 }

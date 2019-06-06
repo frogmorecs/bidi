@@ -32,4 +32,9 @@ namespace Test
 
     }
 
+    [Verb("Set", HelpText = "Set a value of the schema.")]
+    public class SetOptions : Options
+    {
+
+    }
 }
