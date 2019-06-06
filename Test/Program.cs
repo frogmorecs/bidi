@@ -9,8 +9,11 @@ namespace Test
 
     public class Options
     {
-        [Option('p', "printername", Required = true, HelpText = "Name of the printer to query")]
+        [Option('p', "printername", Required = true, HelpText = "Name of the printer to query.")]
         public string PrinterName { get; set; }
+
+        [Option('s', "schema", Required = true, HelpText = "Schema to request from the printer.")]
+        public string Schema { get; set; }
     }
     class Program
     {
@@ -31,7 +34,7 @@ namespace Test
             var bidiRequest = Activator.CreateInstance<BidiRequest>();
             var bidiRequestInterface = (IBidiRequest) bidiRequest;
 
-            bidiRequestInterface.SetSchema("\\Printer.Status.Summary:State");
+            bidiRequestInterface.SetSchema(options.Schema);
 
             bidiInterface.BindDevice(options.PrinterName, (uint) BIDI_ACCESS.BIDI_ACCESS_USER);
 
