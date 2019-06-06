@@ -15,11 +15,11 @@ namespace IBidiSpl
         // virtual HRESULT STDMETHODCALLTYPE GetEnumObject(
         // /* [out] */ __RPC__deref_out_opt IEnumUnknown **ppenum) = 0;
 
-        Int32 GetEnumObject([Out, MarshalAs(UnmanagedType.Interface)] IEnumUnknown ppenum);
+        Int32 GetEnumObject([MarshalAs(UnmanagedType.Interface)] out IEnumUnknown ppenum);
 
         // virtual HRESULT STDMETHODCALLTYPE GetRequestCount(
         // /* [out] */ __RPC__out ULONG *puCount) = 0;
 
-        Int32 GetRequestCount([Out] UInt32 puCount);
+        Int32 GetRequestCount(out UInt32 puCount);
     }
 }

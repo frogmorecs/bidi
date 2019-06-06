@@ -7,13 +7,13 @@ namespace IBidiSpl
     public interface IEnumUnknown
     {
         int Next(
-            [In] int celt,
-            [Out, MarshalAs(UnmanagedType.IUnknown)] object rgelt,
-            [Out] int pceltFetched
+            int celt,
+            [MarshalAs(UnmanagedType.IUnknown)] out object rgelt,
+            out int pceltFetched
         );
 
-        int Skip([In, MarshalAs(UnmanagedType.U4)] int celt);
+        int Skip([MarshalAs(UnmanagedType.U4)] int celt);
         void Reset();
-        void Clone([Out] IEnumUnknown ppenum);
+        void Clone([MarshalAs(UnmanagedType.IUnknown)] out IEnumUnknown ppenum);
     }
 }
