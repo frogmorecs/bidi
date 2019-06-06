@@ -12,7 +12,7 @@ namespace Test
         [Option('p', "printername", Required = true, HelpText = "Name of the printer to query.")]
         public string PrinterName { get; set; }
 
-        [Option('s', "schema", Required = true, HelpText = "Schema to request from the printer.")]
+        [Option('s', "schema", Required = false, HelpText = "Schema to request from the printer.", Default = "\\Printer")]
         public string Schema { get; set; }
 
         [Option('a', "admin", Required = false, HelpText = "Request Administrator access.")]
