@@ -1,14 +1,29 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using CommandLine;
 using IBidiSpl;
 // ReSharper disable SuspiciousTypeConversion.Global
 
 namespace Test
 {
+
+    public class Options
+    {
+        [Option('p', "printername", Required = true, HelpText = "Name of the printer to query")]
+        public string PrinterName { get; set; }
+    }
     class Program
     {
         [STAThread]
-        static void Main(string[] args)
+        private static void Main(string[] args)
+        {
+            Parser
+                .Default
+                .ParseArguments<Options>(args)
+                .WithParsed(QueryPrinter);
+        }
+
+        private static void QueryPrinter(Options options)
         {
             var bidiSpl = Activator.CreateInstance<BidiSpl>();
             var bidiInterface = (IBidiSpl.IBidiSpl) bidiSpl;
@@ -16,13 +31,13 @@ namespace Test
             var bidiRequest = Activator.CreateInstance<BidiRequest>();
             var bidiRequestInterface = (IBidiRequest) bidiRequest;
 
-            bidiRequestInterface.SetSchema("\\Printer");
+            bidiRequestInterface.SetSchema("\\Printer.Status.Summary:State");
 
-            bidiInterface.BindDevice(args[0], (uint) BIDI_ACCESS.BIDI_ACCESS_ADMINISTRATOR);
+            bidiInterface.BindDevice(options.PrinterName, (uint) BIDI_ACCESS.BIDI_ACCESS_USER);
 
             try
             {
-                bidiInterface.SendRecv("GetAll", bidiRequestInterface);
+                bidiInterface.SendRecv("Get", bidiRequestInterface);
 
                 bidiRequestInterface.GetResult(out var hResult);
                 if (hResult != 0)
