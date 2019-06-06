@@ -14,6 +14,9 @@ namespace Test
 
         [Option('s', "schema", Required = true, HelpText = "Schema to request from the printer.")]
         public string Schema { get; set; }
+
+        [Option('a', "admin", Required = false, HelpText = "Request Administrator access.")]
+        public bool Admin { get; set; } = false;
     }
     class Program
     {
@@ -36,7 +39,8 @@ namespace Test
 
             bidiRequestInterface.SetSchema(options.Schema);
 
-            bidiInterface.BindDevice(options.PrinterName, (uint) BIDI_ACCESS.BIDI_ACCESS_USER);
+            var access = options.Admin ? BIDI_ACCESS.BIDI_ACCESS_ADMINISTRATOR : BIDI_ACCESS.BIDI_ACCESS_USER;
+            bidiInterface.BindDevice(options.PrinterName, (uint) access);
 
             try
             {
