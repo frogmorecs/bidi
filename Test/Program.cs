@@ -16,10 +16,20 @@ namespace Test
 
         [Option('a', "admin", Required = false, HelpText = "Request Administrator access.")]
         public bool Admin { get; set; } = false;
-
-        [Option('r', "request", Default = "Get", HelpText = "Request action.")]
-        public string Request { get; set; }
     }
+
+    [Verb("Get", HelpText = "Get the value of a specified schema.")]
+    public class GetOptions : Options
+    {
+
+    }
+
+    [Verb("GetAll", HelpText = "Get the values of all child nodes of the specified schema.")]
+    public class GetAllOptions : Options
+    {
+
+    }
+
     class Program
     {
         [STAThread]
@@ -27,11 +37,12 @@ namespace Test
         {
             Parser
                 .Default
-                .ParseArguments<Options>(args)
-                .WithParsed(QueryPrinter);
+                .ParseArguments<GetOptions, GetAllOptions>(args)
+                .WithParsed<GetOptions>(options => GetRequest(options, "Get"))
+                .WithParsed<GetAllOptions>(options => GetRequest(options, "GetAll"));
         }
 
-        private static void QueryPrinter(Options options)
+        private static void GetRequest(Options options, string verb)
         {
             var bidiSpl = Activator.CreateInstance<BidiSpl>();
             var bidiInterface = (IBidiSpl.IBidiSpl) bidiSpl;
@@ -46,7 +57,7 @@ namespace Test
 
             try
             {
-                bidiInterface.SendRecv(options.Request, bidiRequestInterface);
+                bidiInterface.SendRecv("Get", bidiRequestInterface);
 
                 bidiRequestInterface.GetResult(out var hResult);
                 if (hResult != 0)
