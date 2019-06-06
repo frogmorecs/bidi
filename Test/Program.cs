@@ -6,7 +6,6 @@ using IBidiSpl;
 
 namespace Test
 {
-
     public class Options
     {
         [Option('p', "printername", Required = true, HelpText = "Name of the printer to query.")]
@@ -17,6 +16,9 @@ namespace Test
 
         [Option('a', "admin", Required = false, HelpText = "Request Administrator access.")]
         public bool Admin { get; set; } = false;
+
+        [Option('r', "request", Default = "Get", HelpText = "Request action.")]
+        public string Request { get; set; }
     }
     class Program
     {
@@ -44,7 +46,7 @@ namespace Test
 
             try
             {
-                bidiInterface.SendRecv("Get", bidiRequestInterface);
+                bidiInterface.SendRecv(options.Request, bidiRequestInterface);
 
                 bidiRequestInterface.GetResult(out var hResult);
                 if (hResult != 0)
