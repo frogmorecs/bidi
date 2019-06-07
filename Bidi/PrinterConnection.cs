@@ -17,7 +17,7 @@ namespace IBidiSpl
             _bidiSpl = (Com.IBidiSpl) Activator.CreateInstance<Com.BidiSpl>();
         }
 
-        public Dictionary<string, object> SendRequest(string schema, string verb)
+        public Dictionary<string, object> SendRequest(string schema, RequestType type)
         {
             var bidiRequest = (IBidiRequest) Activator.CreateInstance<BidiRequest>();
 
@@ -25,7 +25,7 @@ namespace IBidiSpl
             {
                 bidiRequest.SetSchema(schema.Trim());
 
-                _bidiSpl.SendRecv(verb, bidiRequest);
+                _bidiSpl.SendRecv(type.ToString(), bidiRequest);
 
                 bidiRequest.GetResult(out int hResult);
                 if (hResult != 0)
@@ -33,7 +33,14 @@ namespace IBidiSpl
                     Marshal.ThrowExceptionForHR(hResult);
                 }
 
-                return GetData(bidiRequest).ToDictionary(t => t.Item1, t => t.Item2);
+                if (type == RequestType.EnumSchema)
+                {
+                    return GetData(bidiRequest).ToDictionary(t => (string)t.Item2, t => t.Item2);
+                }
+                else
+                {
+                    return GetData(bidiRequest).ToDictionary(t => t.Item1, t => t.Item2);
+                }
             }
             finally
             {
@@ -119,5 +126,12 @@ namespace IBidiSpl
                 }
             }
         }
+    }
+
+    public enum RequestType
+    {
+        Get,
+        GetAll,
+        EnumSchema
     }
 }
