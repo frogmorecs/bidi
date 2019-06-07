@@ -23,11 +23,10 @@ namespace Test
 
         private static void GetRequest(Options options, string verb)
         {
-            var bidiSpl = Activator.CreateInstance<BidiSpl>();
-            var bidiInterface = (IBidiSpl.IBidiSpl) bidiSpl;
+            var bidiSpl = (IBidiSpl.IBidiSpl) Activator.CreateInstance<BidiSpl>();
 
             var access = options.Admin ? BIDI_ACCESS.BIDI_ACCESS_ADMINISTRATOR : BIDI_ACCESS.BIDI_ACCESS_USER;
-            bidiInterface.BindDevice(options.PrinterName, (uint) access);
+            bidiSpl.BindDevice(options.PrinterName, (uint) access);
 
             var bidiRequestContainer = (IBidiRequestContainer)Activator.CreateInstance<BidiRequestContainer>();
 
@@ -47,7 +46,7 @@ namespace Test
                     }
                 }
 
-                bidiInterface.MultiSendRecv(verb, bidiRequestContainer);
+                bidiSpl.MultiSendRecv(verb, bidiRequestContainer);
 
                 bidiRequestContainer.GetEnumObject(out var enumerator);
                 try
@@ -160,7 +159,7 @@ namespace Test
             }
             finally
             {
-                bidiInterface.UnbindDevice();
+                bidiSpl.UnbindDevice();
                 Marshal.FinalReleaseComObject(bidiRequestContainer);
                 Marshal.FinalReleaseComObject(bidiSpl);
             }
