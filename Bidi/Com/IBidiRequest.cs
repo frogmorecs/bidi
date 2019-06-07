@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+
 // ReSharper disable CommentTypo
 
-namespace IBidiSpl
+namespace IBidiSpl.Com
 {
     [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     [Guid("8F348BD7-4B47-4755-8A9D-0F422DF3DC89")]

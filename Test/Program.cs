@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using CommandLine;
-using IBidiSpl;
+using IBidiSpl.Com;
+
 // ReSharper disable SuspiciousTypeConversion.Global
 
 namespace Test
@@ -23,7 +24,7 @@ namespace Test
 
         private static void GetRequest(Options options, string verb)
         {
-            var bidiSpl = (IBidiSpl.IBidiSpl) Activator.CreateInstance<BidiSpl>();
+            var bidiSpl = (IBidiSpl.Com.IBidiSpl) Activator.CreateInstance<BidiSpl>();
 
             var access = options.Admin ? BIDI_ACCESS.BIDI_ACCESS_ADMINISTRATOR : BIDI_ACCESS.BIDI_ACCESS_USER;
             bidiSpl.BindDevice(options.PrinterName, (uint) access);

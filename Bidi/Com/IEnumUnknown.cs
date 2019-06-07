@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace IBidiSpl
+namespace IBidiSpl.Com
 {
     [Guid("00000100-0000-0000-C000-000000000046")]
     [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]

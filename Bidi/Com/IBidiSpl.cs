@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+
 // ReSharper disable InconsistentNaming
 
-namespace IBidiSpl
+namespace IBidiSpl.Com
 {
     [Guid("D580DC0E-DE39-4649-BAA8-BF0B85A03A97")]
     [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]

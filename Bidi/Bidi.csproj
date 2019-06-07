@@ -41,15 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BidiRequest.cs" />
-    <Compile Include="BidiRequestContainer.cs" />
-    <Compile Include="BidiSpl.cs" />
-    <Compile Include="IBidiRequest.cs" />
-    <Compile Include="IBidiRequestContainer.cs" />
-    <Compile Include="IBidiSpl.cs" />
-    <Compile Include="IBidiSpl2.cs" />
-    <Compile Include="IEnumUnknown.cs" />
-    <Compile Include="IStream.cs" />
+    <Compile Include="Com\BidiRequest.cs" />
+    <Compile Include="Com\BidiRequestContainer.cs" />
+    <Compile Include="Com\BidiSpl.cs" />
+    <Compile Include="Com\IBidiRequest.cs" />
+    <Compile Include="Com\IBidiRequestContainer.cs" />
+    <Compile Include="Com\IBidiSpl.cs" />
+    <Compile Include="Com\IBidiSpl2.cs" />
+    <Compile Include="Com\IEnumUnknown.cs" />
+    <Compile Include="Com\IStream.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
