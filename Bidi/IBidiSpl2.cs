@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace IBidiSpl
 {
-    [ComImport, Guid("0E8F51B8-8273-4906-8E7B-BE453FFD2E2B")]
+    [Guid("0E8F51B8-8273-4906-8E7B-BE453FFD2E2B")]
     [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     interface IBidiSpl2
     {

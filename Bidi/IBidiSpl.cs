@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 
 namespace IBidiSpl
 {
-    [ComImport, Guid("D580DC0E-DE39-4649-BAA8-BF0B85A03A97")]
+    [Guid("D580DC0E-DE39-4649-BAA8-BF0B85A03A97")]
     [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IBidiSpl
     {

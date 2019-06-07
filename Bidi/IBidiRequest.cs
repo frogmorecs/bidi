@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 namespace IBidiSpl
 {
     [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    [ComImport, Guid("8F348BD7-4B47-4755-8A9D-0F422DF3DC89")]
+    [Guid("8F348BD7-4B47-4755-8A9D-0F422DF3DC89")]
     public interface IBidiRequest
     {
         // virtual HRESULT STDMETHODCALLTYPE SetSchema(
