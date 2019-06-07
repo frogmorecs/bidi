@@ -13,11 +13,12 @@ namespace Test
         {
             Parser
                 .Default
-                .ParseArguments<GetOptions, GetAllOptions, SetOptions, GetWithArgumentOptions>(args)
+                .ParseArguments<GetOptions, GetAllOptions, SetOptions, GetWithArgumentOptions, EnumSchemaOptions>(args)
                 .WithParsed<GetOptions>(options => GetRequest(options, "Get"))
                 .WithParsed<GetAllOptions>(options => GetRequest(options, "GetAll"))
                 .WithParsed<SetOptions>(SetRequest)
-                .WithParsed<GetWithArgumentOptions>(GetWithArgumentRequest);
+                .WithParsed<GetWithArgumentOptions>(GetWithArgumentRequest)
+                .WithParsed<EnumSchemaOptions>(EnumSchemaRequest);
         }
 
         private static void GetRequest(Options options, string verb)
@@ -163,6 +164,11 @@ namespace Test
                 Marshal.FinalReleaseComObject(bidiRequestContainer);
                 Marshal.FinalReleaseComObject(bidiSpl);
             }
+        }
+
+        private static void EnumSchemaRequest(EnumSchemaOptions obj)
+        {
+            throw new NotImplementedException(nameof(EnumSchemaRequest));
         }
 
         private static void GetWithArgumentRequest(GetWithArgumentOptions obj)

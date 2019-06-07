@@ -12,8 +12,8 @@ namespace Test
             "schemas", 
             Required = false, 
             HelpText = "Schemas to request from the printer (comma separated).", 
-            Default = "\\Printer"
-            ,Separator = ',')]
+            Default = new []{"\\Printer"},
+            Separator = ',')]
         public IEnumerable<string> Schemas { get; set; }
 
         [Option('a', "admin", Required = false, HelpText = "Request Administrator access.")]
@@ -40,6 +40,12 @@ namespace Test
 
     [Verb("Set", HelpText = "Set a value of the schema.")]
     public class SetOptions : Options
+    {
+
+    }
+
+    [Verb("EnumSchema", HelpText = "Enumerate the schema. The returned data will be a list of schema that the port monitor or print provider supports.")]
+    public class EnumSchemaOptions : Options
     {
 
     }
