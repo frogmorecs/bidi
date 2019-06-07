@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using CommandLine;
+using IBidiSpl;
 using IBidiSpl.Com;
 
 // ReSharper disable SuspiciousTypeConversion.Global
@@ -166,9 +167,19 @@ namespace Test
             }
         }
 
-        private static void EnumSchemaRequest(EnumSchemaOptions obj)
+        private static void EnumSchemaRequest(EnumSchemaOptions options)
         {
-            throw new NotImplementedException(nameof(EnumSchemaRequest));
+            using (var connection = new PrinterConnection())
+            {
+                var access = options.Admin ? BIDI_ACCESS.BIDI_ACCESS_ADMINISTRATOR : BIDI_ACCESS.BIDI_ACCESS_USER;
+                connection.Bind(options.PrinterName, access);
+
+                var result = connection.SendRequest("\\Printer", "GetAll");
+                foreach (var datum in result)
+                {
+                    Console.WriteLine($"{datum.Key} = {datum.Value}");
+                }
+            }
         }
 
         private static void GetWithArgumentRequest(GetWithArgumentOptions obj)
