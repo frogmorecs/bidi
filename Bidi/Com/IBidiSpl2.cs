@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace IBidiSpl.Com
+namespace Bidi.Com
 {
     [Guid("0E8F51B8-8273-4906-8E7B-BE453FFD2E2B")]
     [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    interface IBidiSpl2
+    internal interface IBidiSpl2
     {
         // virtual HRESULT STDMETHODCALLTYPE BindDevice(
         // /* [in] */ __RPC__in const LPCWSTR pszDeviceName,

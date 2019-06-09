@@ -3,11 +3,11 @@ using System.Runtime.InteropServices;
 
 // ReSharper disable CommentTypo
 
-namespace IBidiSpl.Com
+namespace Bidi.Com
 {
     [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     [Guid("8F348BD7-4B47-4755-8A9D-0F422DF3DC89")]
-    public interface IBidiRequest
+    internal interface IBidiRequest
     {
         // virtual HRESULT STDMETHODCALLTYPE SetSchema(
         // /* [in] */ __RPC__in const LPCWSTR pszSchema) = 0;

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace IBidiSpl.Com
+namespace Bidi.Com
 {
     [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     [Guid("D752F6C0-94A8-4275-A77D-8F1D1A1121AE")]
-    public interface IBidiRequestContainer
+    internal interface IBidiRequestContainer
     {
         // virtual HRESULT STDMETHODCALLTYPE AddRequest(
         // /* [in] */ __RPC__in_opt IBidiRequest *pRequest) = 0;

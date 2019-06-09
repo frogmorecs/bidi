@@ -1,10 +1,10 @@
 ﻿using System.Runtime.InteropServices;
 using STATSTG = System.Runtime.InteropServices.ComTypes.STATSTG;
 
-namespace IBidiSpl.Com
+namespace Bidi.Com
 {
     [Guid("0000000c-0000-0000-C000-000000000046"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    public interface IStream
+    internal interface IStream
     {
         void Read([Out, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 1)] byte[] pv, uint cb, out uint pcbRead);
         void Write([MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 1)] byte[] pv, uint cb, out uint pcbWritten);

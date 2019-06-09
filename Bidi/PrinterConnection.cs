@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
-using IBidiSpl.Com;
+using Bidi.Com;
+
 // ReSharper disable SuspiciousTypeConversion.Global
 
-namespace IBidiSpl
+namespace Bidi
 {
     public class PrinterConnection : IDisposable
     {

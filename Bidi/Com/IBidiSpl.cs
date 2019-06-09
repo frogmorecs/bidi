@@ -3,11 +3,11 @@ using System.Runtime.InteropServices;
 
 // ReSharper disable InconsistentNaming
 
-namespace IBidiSpl.Com
+namespace Bidi.Com
 {
     [Guid("D580DC0E-DE39-4649-BAA8-BF0B85A03A97")]
     [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    public interface IBidiSpl
+    internal interface IBidiSpl
     {
         // virtual HRESULT STDMETHODCALLTYPE BindDevice(
         // /* [in] */ __RPC__in const LPCWSTR pszDeviceName,
@@ -44,7 +44,7 @@ namespace IBidiSpl.Com
         BIDI_ACCESS_USER = 0x2,
     }
 
-    public enum BIDI_DATA_TYPE: uint
+    internal enum BIDI_DATA_TYPE: uint
     {
         BIDI_NULL = 0,
         BIDI_INT = 1,

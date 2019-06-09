@@ -1,10 +1,10 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace IBidiSpl.Com
+namespace Bidi.Com
 {
     [Guid("00000100-0000-0000-C000-000000000046")]
     [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    public interface IEnumUnknown
+    internal interface IEnumUnknown
     {
         int Next(
             int celt,
