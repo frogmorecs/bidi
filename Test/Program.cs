@@ -25,7 +25,17 @@ namespace Test
 
         private static void GetRequest(Options options, RequestType requestType)
         {
-            throw new NotImplementedException();
+            using (var connection = new PrinterConnection())
+            {
+                var access = options.Admin ? BIDI_ACCESS.BIDI_ACCESS_ADMINISTRATOR : BIDI_ACCESS.BIDI_ACCESS_USER;
+                connection.Bind(options.PrinterName, access);
+
+                var result = connection.SendRequest("\\Printer", requestType);
+                foreach (var datum in result)
+                {
+                    Console.WriteLine($"{datum.Key} = {datum.Value}");
+                }
+            }
         }
 
 
