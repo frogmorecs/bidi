@@ -1,4 +1,4 @@
 # bidi
 A wrapper around the BidiSpl.h COM interface.
 
-This is somewhat experimental at the moment, use with caution.
+This didn't resolve the issue I had so is abandoned. I will leave it in place as the bidi interfaces aren't that well supported.
